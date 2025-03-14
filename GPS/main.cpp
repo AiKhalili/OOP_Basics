@@ -30,7 +30,7 @@ int main()
 
                     if (input == "0")
                     {
-                        break;
+                        return 0;
                     }
 
                     if (input == "list")
@@ -49,7 +49,7 @@ int main()
                         }
                         catch (const invalid_argument &e)
                         {
-                            cerr << "Error: " << e.what() << " Try again.\n";
+                            cerr << "Error: " << e.what() << "Try again.\n";
                         }
                     }
                     else

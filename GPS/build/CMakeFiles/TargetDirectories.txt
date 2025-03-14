@@ -1,0 +1,3 @@
+C:/Users/i.T.SYSTEM/OOP_Basics/GPS/build/CMakeFiles/GPS.dir
+C:/Users/i.T.SYSTEM/OOP_Basics/GPS/build/CMakeFiles/edit_cache.dir
+C:/Users/i.T.SYSTEM/OOP_Basics/GPS/build/CMakeFiles/rebuild_cache.dir

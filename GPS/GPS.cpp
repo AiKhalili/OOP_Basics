@@ -6,21 +6,13 @@ using namespace std;
 
 GPS::GPS(double lat, double lon)
 {
-    try
+    if (lat < -90.0 || lat > 90.0 || lon < -180.0 || lon > 180.0)
     {
-        if (lat < -90.0 || lat > 90.0 || lon < -180.0 || lon > 180.0)
-        {
-            throw invalid_argument("Invalid GPS coordinates !\n");
-        }
-        latitude = lat;
-        longitude = lon;
-        history.push_back({lat, lon});
+        throw invalid_argument("Invalid GPS coordinates !\n");
     }
-    catch (const invalid_argument &e)
-    {
-        cerr << "Error :" << e.what() << '\n'
-             << "Please enter valid coordinate.\n";
-    }
+    latitude = lat;
+    longitude = lon;
+    history.push_back({lat, lon});
 }
 
 GPS::~GPS()
@@ -34,16 +26,16 @@ GPS::~GPS()
 
 void GPS::showOnMap() const
 {
-    cout << "See your location on Google Map :\t";
+    cout << "See your location on Google Maps :\t";
     cout << "https://www.google.com/maps?q=" << latitude << "," << longitude << endl;
-    cout << "____________________________________________________________________________\n";
+    cout << "____________________________________________________________________________________\n";
 }
 
 void GPS::setLocation(double lat, double lon)
 {
     if (lat < -90.0 || lat > 90.0 || lon < -180.0 || lon > 180.0)
     {
-        cerr << "Error : Invalid GPS coordinate!";
+        throw invalid_argument("Invalid GPS coordinates !\n");
     }
     latitude = lat;
     longitude = lon;
