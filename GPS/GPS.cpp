@@ -1,6 +1,6 @@
 #include <iostream>
 #include <stdexcept>
-#include "GPS.h"
+#include "GPS.hpp"
 
 using namespace std;
 

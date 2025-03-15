@@ -1,7 +1,7 @@
 #include <iostream>
 #include <sstream>
 #include <stdexcept>
-#include "GPS.h"
+#include "GPS.hpp"
 
 using namespace std;
 
