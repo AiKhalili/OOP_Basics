@@ -39,14 +39,21 @@ void calendar::refresh()
 {
     time_t now = time(nullptr);
     size_t before = events.size();
-    for (size_t i = 0; i < events.size(); i++)
+
+    for (size_t i = 0; i < events.size();)
     {
         if (events[i].get_end() < now)
         {
-            events[i].set_check();
-            events.erase(events.begin() + i);
+            swap(events[i], events.back());
+            events.back().set_check();
+            events.pop_back();
+        }
+        else
+        {
+            ++i;
         }
     }
+
     if (events.size() < before)
     {
         cout << "Refresh completed.\n";
