@@ -25,7 +25,7 @@ bool calendar::find_event(const Event &newEvent)
     return true;
 }
 
-void calendar::add_event(const Event& newEvent)
+void calendar::add_event(const Event &newEvent)
 {
     if (find_event(newEvent))
     {
@@ -39,9 +39,14 @@ void calendar::refresh()
 {
     time_t now = time(nullptr);
     size_t before = events.size();
-    events.erase(remove_if(events.begin(), events.end(), [now](const Event &event)
-                           { return (now > event.get_end()); }),
-                 events.end());
+    for (size_t i = 0; i < events.size(); i++)
+    {
+        if (events[i].get_end() < now)
+        {
+            events[i].set_check();
+            events.erase(events.begin() + i);
+        }
+    }
     if (events.size() < before)
     {
         cout << "Refresh completed.\n";
@@ -70,11 +75,15 @@ void calendar::print()
              << "* " << setw(20) << left << end_buffer
              << "*\n";
     }
-    cout << setw(60) << "*******************************************************************\n" ;
+    cout << setw(60) << "*******************************************************************\n";
 }
 
 void calendar::clear()
 {
+    for (size_t i = 0; i < events.size(); i++)
+    {
+        events[i].set_check();
+    }
     events.clear();
     cout << "The event list has been cleared.\n";
 }
@@ -86,6 +95,7 @@ void calendar::remove_event(const string &name)
 
     if (it != events.end())
     {
+        it->set_check();
         events.erase(it, events.end());
     }
     else

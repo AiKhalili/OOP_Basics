@@ -13,7 +13,10 @@ Event::Event(std::string NAME, time_t START, time_t END) : name(NAME), start_tim
 
 Event::~Event()
 {
-    cout << "Event [" << name << "] deleted.\n";
+    if (check)
+    {
+        cout << "Event [" << name << "] deleted.\n";
+    }
 }
 
 string Event::get_name() const { return name; }
@@ -21,3 +24,5 @@ string Event::get_name() const { return name; }
 time_t Event::get_start() const { return start_time; }
 
 time_t Event::get_end() const { return end_time; }
+
+void Event::set_check() { check = true; }
