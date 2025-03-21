@@ -38,27 +38,23 @@ void calendar::add_event(const Event &newEvent)
 void calendar::refresh()
 {
     time_t now = time(nullptr);
-    size_t before = events.size();
+    size_t Size = events.size();
 
-    for (size_t i = 0; i < before;)
+    for (size_t i = 0; i < Size;)
     {
         if (events[i].get_end() < now)
         {
             swap(events[i], events.back());
             events.back().set_check();
             events.pop_back();
-            before--;
+            Size--;
         }
         else
         {
             ++i;
         }
     }
-
-    if (events.size() < before)
-    {
-        cout << "Refresh completed.\n";
-    }
+    cout << "Refresh completed.\n";
 }
 
 void calendar::print()
