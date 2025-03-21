@@ -40,13 +40,14 @@ void calendar::refresh()
     time_t now = time(nullptr);
     size_t before = events.size();
 
-    for (size_t i = 0; i < events.size();)
+    for (size_t i = 0; i < before;)
     {
         if (events[i].get_end() < now)
         {
             swap(events[i], events.back());
             events.back().set_check();
             events.pop_back();
+            before--;
         }
         else
         {
