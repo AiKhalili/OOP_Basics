@@ -1,0 +1,3 @@
+C:/Users/i.T.SYSTEM/OOP_Basics/MedicalPatient/build/CMakeFiles/app.dir
+C:/Users/i.T.SYSTEM/OOP_Basics/MedicalPatient/build/CMakeFiles/edit_cache.dir
+C:/Users/i.T.SYSTEM/OOP_Basics/MedicalPatient/build/CMakeFiles/rebuild_cache.dir
