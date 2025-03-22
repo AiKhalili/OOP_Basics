@@ -115,6 +115,7 @@ void Patient::display() const
 
 Patient::~Patient()
 {
+    cout << "Encrypting patient data for " << name << "...\n";
     encryptOrDecrypt();
     cout << "Data encrypted!\n";
 }
