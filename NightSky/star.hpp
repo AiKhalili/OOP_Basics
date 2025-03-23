@@ -2,19 +2,24 @@
 #define STAR_H
 
 #include <iostream>
+#include <C:\w64devkit\include\raylib.h>
 
 class Star
 {
 private:
     int x, y;
-    double brightness;
-    std::string color;
+    float brightness;
+    Color color;
 
 public:
-    Star(int X, int Y, double BRIGHTNESS, std::string COLOR);
+    Star(int X, int Y, float BRIGHTNESS, Color COLOR);
+    void display() const;
+    void draw() const;
+    void twinkle();
     int get_x() const;
     int get_y() const;
-    void showStarInformation() const;
+    float get_britness() const;
+    Color get_color() const;
 };
 
 #endif
