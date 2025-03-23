@@ -31,7 +31,6 @@ Patient *Hospital::searchPatient(const string &name, int &index)
             return &patients[i];
         }
     }
-
     cout << "No patient found with the name : " << name << '\n';
     return nullptr;
 }
@@ -39,34 +38,65 @@ Patient *Hospital::searchPatient(const string &name, int &index)
 void Hospital::remove(const string &name)
 {
     int index = -1;
-    Patient *nothing = searchPatient(name, index);
+    Patient *patientToRemove = searchPatient(name, index);
+
     if (index >= 0 && index < patients.size())
     {
         patients.erase(patients.begin() + index);
+
+        ofstream file("Patients.txt", ios::trunc);
+        if (file.is_open())
+        {
+            for (const Patient &p : patients)
+            {
+                file << p.encryptAns() << '\n';
+            }
+            file.close();
+        }
         cout << "Patient removed successfully!\n";
+    }
+    else
+    {
+        cout << "No patient found with the name: " << name << '\n';
     }
 }
 
-void Hospital::load(){
+bool Hospital::isPatientExists(const string &name)
+{
+    for (const Patient &p : patients)
+    {
+        if (p.get_name() == name)
+        {
+            return true;
+        }
+    }
+    return false;
+}
+
+void Hospital::load()
+{
     ifstream file("Patients.txt");
-    if(!file.is_open()){
+    if (!file.is_open())
+    {
         return;
     }
 
     patients.clear();
     string line;
-    while(getline(file,line)){
+
+    while (getline(file, line))
+    {
         stringstream ss(line);
         string name, age_str, temp_str, heart_str, resp_str, bp_str, oxygen_str, sugar_str;
 
-        getline(ss,name,'|');
-        getline(ss,age_str,'|');
-        getline(ss,temp_str,'|');
-        getline(ss,heart_str,'|');
-        getline(ss,resp_str,'|');
-        getline(ss,bp_str,'|');
-        getline(ss,oxygen_str,'|');
-        getline(ss,sugar_str,'|');
+        getline(ss, name, '|');
+        getline(ss, age_str, '|');
+        getline(ss, temp_str, '|');
+        getline(ss, heart_str, '|');
+        getline(ss, resp_str, '|');
+        getline(ss, bp_str, '|');
+        getline(ss, oxygen_str, '|');
+        getline(ss, sugar_str, '|');
 
         name = Patient::encryptDecryptString(name);
         float age = stof(Patient::encryptDecryptString(age_str));
@@ -77,21 +107,11 @@ void Hospital::load(){
         int oxygenSaturation = stoi(Patient::encryptDecryptString(oxygen_str));
         int bloodSugar = stoi(Patient::encryptDecryptString(sugar_str));
 
-        patients.push_back(Patient(name,age,temp,heartRate,respiratoryRate,bloodPressure,oxygenSaturation,bloodSugar,true));
+        if (!isPatientExists(name))
+        {
+            patients.push_back(Patient(name, age, temp, heartRate, respiratoryRate, bloodPressure, oxygenSaturation, bloodSugar, true));
+        }
     }
     file.close();
     cout << "Patients records loaded successflly!\n";
-}
-
-void Hospital::SaveToFile()const {
-    ofstream file("Patients.txt");
-    if(!file.is_open()){
-        cout << "Error opening file to save data!\n";
-        return;
-    }
-    for(const Patient& patient : patients){
-        file << patient.encryptAns() << '\n';
-    }
-    file.close();
-    cout << "Patient data saved successfully!\n";
 }

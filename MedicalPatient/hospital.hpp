@@ -16,7 +16,7 @@ public:
     Patient *searchPatient(const std::string &name, int &index);
     void remove(const std::string &name);
     void load();
-    void SaveToFile()const;
+    bool isPatientExists(const std::string &name);
 };
 
 #endif

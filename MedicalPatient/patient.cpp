@@ -3,11 +3,12 @@
 #include <ctime>
 #include <iomanip>
 #include <string>
+#include <fstream>
 #include <sstream>
 
 using namespace std;
 
-Patient::Patient(string NAME, float AGE, float TEMP, int HEART, int RESP, int BLOODP, int OXYGEN, int SUGER)
+Patient::Patient(string NAME, float AGE, float TEMP, int HEART, int RESP, int BLOODP, int OXYGEN, int SUGER, bool ISENCRYPT)
 {
     name = NAME;
     age = AGE;
@@ -17,19 +18,11 @@ Patient::Patient(string NAME, float AGE, float TEMP, int HEART, int RESP, int BL
     bloodPressure = BLOODP;
     oxygenSaturation = OXYGEN;
     bloodSugar = SUGER;
-    validateVitals();
-}
-
-Patient::Patient(string NAME, float AGE, float TEMP, int HEART, int RESP, int BLOODP, int OXYGEN, int SUGER,bool fromFile)
-{
-    name = NAME;
-    age = AGE;
-    bodyTemperature = TEMP;
-    heartRate = HEART;
-    respiratoryRate = RESP;
-    bloodPressure = BLOODP;
-    oxygenSaturation = OXYGEN;
-    bloodSugar = SUGER;
+    IsEncrypt = ISENCRYPT;
+    if (!IsEncrypt)
+    {
+        validateVitals();
+    }
 }
 
 bool Patient::validateResp(float Age, int rate) const
@@ -132,14 +125,21 @@ string Patient::encryptAns() const
        << encryptDecryptString(to_string(bloodPressure)) << '|'
        << encryptDecryptString(to_string(oxygenSaturation)) << '|'
        << encryptDecryptString(to_string(bloodSugar));
-   return ss.str();
+    return ss.str();
 }
 
 Patient::~Patient()
 {
-    encryptAns();
-    cout << "Data encrypted!\n";
+    if (!IsEncrypt)
+    {
+        ofstream file("Patients.txt", ios::app);
+        if (file.is_open())
+        {
+            file << encryptAns() << '\n';
+            file.close();
+        }
+        IsEncrypt = true;
+    }
 }
- 
 
 string Patient::get_name() const { return name; }
