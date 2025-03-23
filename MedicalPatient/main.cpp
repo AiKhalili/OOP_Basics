@@ -162,6 +162,7 @@ bool check(string &selection, Hospital &hospital)
         bloodSugar = getValidInt(sugar_str);
         Patient patient(name, age, bodyTemperature, heartRate, respiratoryRate, bloodPressure, oxygenSaturation, bloodSugar);
         hospital.add(patient);
+        hospital.SaveToFile();
         return true;
     }
     else if (selection == "2")
@@ -186,6 +187,7 @@ bool check(string &selection, Hospital &hospital)
         cin.ignore(1000, '\n');
         name = getValidString(name_str);
         hospital.remove(name);
+        hospital.SaveToFile();
         return true;
     }
     else if (selection == "5")
@@ -213,15 +215,17 @@ int main()
     Hospital hospital;
     string input;
 
+    hospital.load();
+
     while (true)
     {
         menue();
         getline(cin, input);
         if (!check(input, hospital))
         {
+            hospital.SaveToFile();
             return 0;
         }
     }
-
     return 0;
 }

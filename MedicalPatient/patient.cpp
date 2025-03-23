@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <ctime>
 #include <iomanip>
+#include <string>
 #include <sstream>
 
 using namespace std;
@@ -16,8 +17,19 @@ Patient::Patient(string NAME, float AGE, float TEMP, int HEART, int RESP, int BL
     bloodPressure = BLOODP;
     oxygenSaturation = OXYGEN;
     bloodSugar = SUGER;
-    int key = static_cast<int>(time(nullptr)) % 100000;
     validateVitals();
+}
+
+Patient::Patient(string NAME, float AGE, float TEMP, int HEART, int RESP, int BLOODP, int OXYGEN, int SUGER,bool fromFile)
+{
+    name = NAME;
+    age = AGE;
+    bodyTemperature = TEMP;
+    heartRate = HEART;
+    respiratoryRate = RESP;
+    bloodPressure = BLOODP;
+    oxygenSaturation = OXYGEN;
+    bloodSugar = SUGER;
 }
 
 bool Patient::validateResp(float Age, int rate) const
@@ -86,21 +98,6 @@ void Patient::validateVitals() const
     }
 }
 
-void Patient::encryptOrDecrypt()
-{
-    for (char &c : name)
-    {
-        c ^= key % 256;
-    }
-
-    bodyTemperature = static_cast<double>(static_cast<int>(bodyTemperature * 1000) ^ key) / 1000.0;
-    heartRate ^= key;
-    respiratoryRate ^= key;
-    bloodPressure ^= key;
-    oxygenSaturation = static_cast<double>(static_cast<int>(oxygenSaturation * 1000) ^ key) / 1000.0;
-    bloodSugar = static_cast<double>(static_cast<int>(bloodSugar * 1000) ^ key) / 1000.0;
-}
-
 void Patient::display() const
 {
     cout << "* Name : " << name << endl
@@ -113,11 +110,36 @@ void Patient::display() const
          << "* Blood suger : " << bloodSugar << "mg/dL\n";
 }
 
+string Patient::encryptDecryptString(string text)
+{
+    char key = 'X';
+    for (char &c : text)
+    {
+        c ^= key;
+    }
+    return text;
+}
+
+string Patient::encryptAns() const
+{
+    stringstream ss;
+
+    ss << encryptDecryptString(name) << '|'
+       << encryptDecryptString(to_string(age)) << '|'
+       << encryptDecryptString(to_string(bodyTemperature)) << '|'
+       << encryptDecryptString(to_string(heartRate)) << '|'
+       << encryptDecryptString(to_string(respiratoryRate)) << '|'
+       << encryptDecryptString(to_string(bloodPressure)) << '|'
+       << encryptDecryptString(to_string(oxygenSaturation)) << '|'
+       << encryptDecryptString(to_string(bloodSugar));
+   return ss.str();
+}
+
 Patient::~Patient()
 {
-    cout << "Encrypting patient data for " << name << "...\n";
-    encryptOrDecrypt();
+    encryptAns();
     cout << "Data encrypted!\n";
 }
+ 
 
 string Patient::get_name() const { return name; }
