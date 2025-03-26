@@ -1,1 +1,0 @@
-/usr/bin/c++ CMakeFiles/app.dir/main.cpp.o CMakeFiles/app.dir/star.cpp.o CMakeFiles/app.dir/sky.cpp.o -o app  /usr/local/lib/libraylib.a -L/usr/local/lib -lraylib 

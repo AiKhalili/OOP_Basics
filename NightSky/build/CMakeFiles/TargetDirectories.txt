@@ -1,3 +1,0 @@
-/media/pascalpc-ir/D/Code/NightSky/build/CMakeFiles/app.dir
-/media/pascalpc-ir/D/Code/NightSky/build/CMakeFiles/edit_cache.dir
-/media/pascalpc-ir/D/Code/NightSky/build/CMakeFiles/rebuild_cache.dir
