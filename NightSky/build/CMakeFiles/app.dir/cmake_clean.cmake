@@ -1,14 +1,12 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/app.dir/main.cpp.obj"
-  "CMakeFiles/app.dir/main.cpp.obj.d"
-  "CMakeFiles/app.dir/sky.cpp.obj"
-  "CMakeFiles/app.dir/sky.cpp.obj.d"
-  "CMakeFiles/app.dir/star.cpp.obj"
-  "CMakeFiles/app.dir/star.cpp.obj.d"
-  "app.exe"
-  "app.exe.manifest"
+  "CMakeFiles/app.dir/main.cpp.o"
+  "CMakeFiles/app.dir/main.cpp.o.d"
+  "CMakeFiles/app.dir/sky.cpp.o"
+  "CMakeFiles/app.dir/sky.cpp.o.d"
+  "CMakeFiles/app.dir/star.cpp.o"
+  "CMakeFiles/app.dir/star.cpp.o.d"
+  "app"
   "app.pdb"
-  "libapp.dll.a"
 )
 
 # Per-language clean rules from dependency scanning.

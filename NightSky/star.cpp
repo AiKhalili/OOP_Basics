@@ -28,7 +28,7 @@ void Star::display() const
 
 void Star::draw() const
 {
-    float radius = brightness * 3.0f;
+    float radius = brightness * 7.0f;
     DrawCircle(x, y, radius, color);
 }
 

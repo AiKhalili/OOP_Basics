@@ -8,9 +8,9 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
-  "C:/Users/i.T.SYSTEM/OOP_Basics/NightSky/main.cpp" "CMakeFiles/app.dir/main.cpp.obj" "gcc" "CMakeFiles/app.dir/main.cpp.obj.d"
-  "C:/Users/i.T.SYSTEM/OOP_Basics/NightSky/sky.cpp" "CMakeFiles/app.dir/sky.cpp.obj" "gcc" "CMakeFiles/app.dir/sky.cpp.obj.d"
-  "C:/Users/i.T.SYSTEM/OOP_Basics/NightSky/star.cpp" "CMakeFiles/app.dir/star.cpp.obj" "gcc" "CMakeFiles/app.dir/star.cpp.obj.d"
+  "/media/pascalpc-ir/D/Code/NightSky/main.cpp" "CMakeFiles/app.dir/main.cpp.o" "gcc" "CMakeFiles/app.dir/main.cpp.o.d"
+  "/media/pascalpc-ir/D/Code/NightSky/sky.cpp" "CMakeFiles/app.dir/sky.cpp.o" "gcc" "CMakeFiles/app.dir/sky.cpp.o.d"
+  "/media/pascalpc-ir/D/Code/NightSky/star.cpp" "CMakeFiles/app.dir/star.cpp.o" "gcc" "CMakeFiles/app.dir/star.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

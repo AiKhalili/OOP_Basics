@@ -1,3 +1,5 @@
 cmake_minimum_required(VERSION 3.10)
 project(TestProject)
 add_executable(app main.cpp star.cpp sky.cpp)
+find_package(raylib REQUIRED)
+target_link_libraries(app raylib)

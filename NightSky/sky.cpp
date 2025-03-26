@@ -1,5 +1,5 @@
 #include <cstdlib>
-#include <C:\w64devkit\include\raylib.h>
+#include <raylib.h>
 #include "sky.hpp"
 
 using namespace std;
@@ -18,7 +18,7 @@ void Meteor::update()
 
 void Meteor::draw() const
 {
-    DrawCircle(x, y, 5.5, RED);
+    DrawCircle(x, y, 9, RED);
 }
 
 void Meteor::display() const
@@ -44,7 +44,7 @@ void UFO::update()
 
 void UFO::draw() const
 {
-    DrawCircle(x, y, 15, LIME);
+    DrawCircle(x, y, 17, GOLD);
 }
 
 void UFO::display() const

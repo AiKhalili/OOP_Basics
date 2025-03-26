@@ -2,7 +2,7 @@
 #define STAR_H
 
 #include <iostream>
-#include <C:\w64devkit\include\raylib.h>
+#include <raylib.h>
 
 class Star
 {

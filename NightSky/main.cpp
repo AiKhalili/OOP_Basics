@@ -17,7 +17,7 @@ void menue()
     cout << "* 2. Add a new UFO                               *\n";
     cout << "* 3. Add a new meteor                            *\n";
     cout << "* 4. Show sky in terminal                        *\n";
-    cout << "* 5. Show sky in consol                          *\n";
+    cout << "* 5. Show sky in Raylib                          *\n";
     cout << "* 6. Display all                                 *\n";
     cout << "**************************************************\n";
     cout << "Select an option to continue: ";
@@ -56,11 +56,19 @@ int getValidInt(string prompt, bool range)
                     throw out_of_range("Number out of valid range!\n");
                 }
             }
+            if(!range && (number < 1 || number > 10000))
+            {
+                throw out_of_range("Number out of valid range (must between 1-10000)!\n");
+            }
             return number;
         }
         catch (const invalid_argument &e)
         {
             cout << "Invalid input! " << e.what() << "Try again.\n";
+        }
+        catch (const out_of_range &e)
+        {
+            cout << e.what() << " Try again.\n";
         }
     }
 }

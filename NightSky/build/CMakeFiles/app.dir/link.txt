@@ -1,3 +1,1 @@
-"C:\Program Files\CMake\bin\cmake.exe" -E rm -f CMakeFiles\app.dir/objects.a
-C:\MinGW\bin\ar.exe qc CMakeFiles\app.dir/objects.a @CMakeFiles\app.dir\objects1.rsp
-C:\MinGW\bin\c++.exe -Wl,--whole-archive CMakeFiles\app.dir/objects.a -Wl,--no-whole-archive -o app.exe -Wl,--out-implib,libapp.dll.a -Wl,--major-image-version,0,--minor-image-version,0 @CMakeFiles\app.dir\linkLibs.rsp
+/usr/bin/c++ CMakeFiles/app.dir/main.cpp.o CMakeFiles/app.dir/star.cpp.o CMakeFiles/app.dir/sky.cpp.o -o app  /usr/local/lib/libraylib.a -L/usr/local/lib -lraylib 
