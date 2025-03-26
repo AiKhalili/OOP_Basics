@@ -1,3 +1,0 @@
-C:/Users/i.T.SYSTEM/OOP_Basics/CalendarEvent/build/CMakeFiles/calendar.dir
-C:/Users/i.T.SYSTEM/OOP_Basics/CalendarEvent/build/CMakeFiles/edit_cache.dir
-C:/Users/i.T.SYSTEM/OOP_Basics/CalendarEvent/build/CMakeFiles/rebuild_cache.dir
